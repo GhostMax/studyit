@@ -14,10 +14,18 @@
             "bootstrap": "assets/bootstrap/js/bootstrap.min",
             "template": "assets/artTemplate/template",
             "nprogress": "assets/nprogress/nprogress",
-            "common": "js/common"
+            "common": "js/common",
+            "login": "js/dashoard/login",
+            "echarts": "assets/echarts/echarts.min"
         },
         shim:{
             "bootsrap":{
+                deps:['jquery']
+            },
+            "nprogress": {
+                deps:['jquery']
+            },
+            "echarts": {
                 deps:['jquery']
             }
         }

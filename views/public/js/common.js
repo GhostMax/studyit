@@ -1,13 +1,13 @@
 
 
-define(['jquery','cookie','template'],function($,cookie,template){
-	//NProgress.start();
-    //
-	//NProgress.done();
-    //
-	//$('.navs ul').prev('a').on('click', function () {
-	//	$(this).next().slideToggle();
-	//});
+define(['jquery','cookie','template','nprogress'],function($,cookie,template,NProgress){
+	NProgress.start();
+
+	NProgress.done();
+
+	$('.navs ul').prev('a').on('click', function () {
+		$(this).next().slideToggle();
+	});
 
 	if(!$.cookie("PHPSESSID")&&location.pathname != "/login"){
 		window.location.href = "/login";
@@ -17,4 +17,15 @@ define(['jquery','cookie','template'],function($,cookie,template){
 		var htmlstr = template("tp_aside_avatar",JSON.parse($.cookie("tcInfo")));
 		$(".aside>.profile").html(htmlstr);
 	}
+
+	$(".nav>li>a").on("click",function(){
+		$.ajax({
+			url:"api/logout",
+			type:"post",
+			success:function(result){
+				window.location.href = "/";
+				alert(result.msg);
+			}
+		})
+	})
 })
